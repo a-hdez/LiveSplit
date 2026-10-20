@@ -24,6 +24,7 @@ public partial class ChooseComparisonsDialog : Form
             AverageSegmentsComparisonGenerator.ComparisonName,
             MedianSegmentsComparisonGenerator.ComparisonName,
             WorstSegmentsComparisonGenerator.ComparisonName,
+            SegmentPercentileComparisonGenerator.ComparisonName,
             PercentileComparisonGenerator.ComparisonName,
             LatestRunComparisonGenerator.ComparisonName,
             HCPComparisonGenerator.ComparisonName,
