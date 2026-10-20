@@ -14,7 +14,7 @@ public class SegmentPercentileComparisonGenerator : IComparisonGenerator
     public const double Weight = 0.75;
     public const double DefaultPercentile = 75;
 
-    public string Name => ComparisonName;
+    public virtual string Name => ComparisonName;
 
     // Percentile in the range [0, 100]. 0 is the best segment, 50 the median, 100 the worst.
     public double Percentile { get; set; } = DefaultPercentile;
@@ -30,7 +30,7 @@ public class SegmentPercentileComparisonGenerator : IComparisonGenerator
         var weightedList = curList.Select((x, i) => new KeyValuePair<double, TimeSpan>(GetWeight(i, elementCount), x)).ToList();
         weightedList = [.. weightedList.OrderBy(x => x.Value)];
         double totalWeights = weightedList.Sum(x => x.Key);
-        double targetWeight = totalWeights * Max(0, Min(100, Percentile)) / 100;
+        double targetWeight = totalWeights * (Max(0, Min(100, Percentile)) / 100);
         double curTotal = 0.0;
         foreach (KeyValuePair<double, TimeSpan> element in weightedList)
         {
@@ -105,7 +105,7 @@ public class SegmentPercentileComparisonGenerator : IComparisonGenerator
         }
     }
 
-    public void Generate(ISettings settings)
+    public virtual void Generate(ISettings settings)
     {
         Percentile = settings.SegmentPercentile;
         Generate(TimingMethod.RealTime);
