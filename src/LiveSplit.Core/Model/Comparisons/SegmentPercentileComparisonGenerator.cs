@@ -12,7 +12,7 @@ public class SegmentPercentileComparisonGenerator : IComparisonGenerator
     public const string ComparisonName = "Percentile Segments";
     public const string ShortComparisonName = "Percentile";
     public const double Weight = 0.75;
-    public const double DefaultPercentile = 75;
+    public const double DefaultPercentile = 33;
 
     public virtual string Name => ComparisonName;
 
